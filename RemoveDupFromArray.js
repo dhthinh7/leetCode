@@ -7,13 +7,15 @@
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 nums = [0,0,1,1,1,2,2,3,3,4]
 var removeDuplicates = function(nums) {
-    var count = 0;
-    nums.map((item, i) => {
-        if (nums[i+1] != nums[i]){
-            nums[count++] = nums[i];
-        };
-    })
-  return(count);
+    // var count = 0;
+    // nums.map((item, index)=>{
+    //     if (nums[index + 1] != item) nums[count++] = nums[index];
+    // })
+    // return count; 
+    return nums.reduce((value, item, index)=>{
+        if (nums[index + 1] != item) nums[value++] = item;
+        return value;
+    }, 0);
 };
 console.log(removeDuplicates(nums));
 console.log(nums);
